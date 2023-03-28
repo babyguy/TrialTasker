@@ -64,7 +64,7 @@ route::group([
 route::group([
     'prefix'=>'persons',
     'controller' => PersonController::class,
-    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
+    'middleware' => ['cors','auth:sanctum', 'verified', 'authCookie']
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -78,7 +78,7 @@ route::group([
 route::group([
     'prefix'=>'cases',
     'controller' => CasoController::class,
-    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
+    'middleware' => ['cors', 'auth:sanctum', 'verified', 'authCookie']
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -92,7 +92,7 @@ route::group([
 route::group([
     'prefix'=>'typeStages',
     'controller' => TypeStageController::class,
-    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
+    'middleware' => ['cors','auth:sanctum', 'verified', 'authCookie']
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -107,7 +107,7 @@ route::group([
 route::group([
     'prefix'=>'stages',
     'controller' => StageController::class,
-    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
+    'middleware' => ['cors','auth:sanctum', 'verified', 'authCookie']
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -121,7 +121,7 @@ route::group([
 route::group([
     'prefix'=>'personStages',
     'controller' => PersonStageController::class,
-    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
+    'middleware' => ['cors','auth:sanctum', 'verified', 'authCookie']
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -135,7 +135,7 @@ route::group([
 route::group([
     'prefix'=>'files',
     'controller' => FileController::class,
-    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
+    'middleware' => ['cors','auth:sanctum', 'verified', 'authCookie']
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
