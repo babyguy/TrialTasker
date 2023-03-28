@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 // ------------------------dashboard------------------------
 
 
-Route::middleware(['auth:sanctum', 'authCookie'])->get('/user', function (Request $request) {
+Route::middleware(['auth:sanctum', 'authCookie','cors'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -35,7 +35,7 @@ Route::middleware(['auth:sanctum', 'authCookie'])->get('/user', function (Reques
 Route::group([
     'prefix' => 'type-persons',
     'controller' => TypePersonController::class,
-    'middleware' => ['auth:sanctum', 'verified', 'authCookie']
+    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
 ], function () {
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -49,7 +49,8 @@ Route::group([
 route::group([
     'prefix'=> 'users',
     'controller'=> UserController::class,
-    'middleware' => ['auth:sanctum', 'verified', 'authCookie']
+    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
+
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -63,6 +64,7 @@ route::group([
 route::group([
     'prefix'=>'persons',
     'controller' => PersonController::class,
+    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -76,6 +78,7 @@ route::group([
 route::group([
     'prefix'=>'cases',
     'controller' => CasoController::class,
+    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -89,6 +92,7 @@ route::group([
 route::group([
     'prefix'=>'typeStages',
     'controller' => TypeStageController::class,
+    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -103,6 +107,7 @@ route::group([
 route::group([
     'prefix'=>'stages',
     'controller' => StageController::class,
+    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -116,6 +121,7 @@ route::group([
 route::group([
     'prefix'=>'personStages',
     'controller' => PersonStageController::class,
+    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -129,6 +135,7 @@ route::group([
 route::group([
     'prefix'=>'files',
     'controller' => FileController::class,
+    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -143,6 +150,6 @@ route::group([
 // ------------------------user------------------------
 
 // casos del usuario
-Route::get('/casesActive',[CasoController::class, 'casesActive']);
-Route::get('/casesInactive',[CasoController::class, 'casesInactive']);
-Route::get('/infoCase/{id}',[StageController::class, 'infoCase']);
+Route::get('/casesActive',[CasoController::class, 'casesActive'])->middleware('cors');
+Route::get('/casesInactive',[CasoController::class, 'casesInactive'])->middleware('cors');
+Route::get('/infoCase/{id}',[StageController::class, 'infoCase'])->middleware('cors');
