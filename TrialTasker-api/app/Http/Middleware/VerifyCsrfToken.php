@@ -13,8 +13,17 @@ class VerifyCsrfToken extends Middleware
         $response = $next($request);
         $response->header('Access-Control-Allow-Origin','*');
         $response->header('Access-Control-Allow-Methods','GET,POST,PUT,DELETE,OPTIONS');
-
         return $response;
     }
 
+    protected $except = [
+        '/api/*',
+        '/login',
+        '/register',
+        '/forgot-password',
+        '/reset-password',
+        '/verify-email/{id}/{hash}',
+        '/email/verification-notification',
+        '/logout',
+    ];
 }
