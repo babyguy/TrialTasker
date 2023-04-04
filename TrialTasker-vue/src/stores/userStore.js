@@ -4,6 +4,7 @@ import router from "../router";
 
 export const useUserStore = defineStore('users', {
     state: () => ({
+        usersStoreOnline: [],
         usersStoreAll: [],
         usersStore: [],
         userStore: {},  
@@ -11,6 +12,7 @@ export const useUserStore = defineStore('users', {
         messagesStore: [],
     }),
     getters: {
+        usersOnline: (state) => state.usersStoreOnline,
         usersAll: (state) => state.usersStoreAll,
         users: (state) => state.usersStore,
         user: (state) => state.userStore,
@@ -23,6 +25,7 @@ export const useUserStore = defineStore('users', {
             await axios.get('/api/users')
             .then(response => {
                 this.usersStore = response.data;
+                console.log(response.data)
             });
         },
         /* get all users */

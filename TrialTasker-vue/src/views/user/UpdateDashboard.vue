@@ -16,12 +16,7 @@
         <FormGroup label="Dirección" :error="users.errors ? users.errors.address : []">
             <input type="text" id="address" v-model="form.address">
         </FormGroup>
-        <FormGroup label="Contraseña" :error="users.errors ? users.errors.password : []">
-            <input type="password" id="password" v-model="form.password">
-        </FormGroup>
-        <FormGroup label="Confirmacion de contraseña" :error="users.errors ? users.errors.password_confirmation : []">
-            <input type="password" id="password_confirmation" v-model="form.password_confirmation">
-        </FormGroup>
+        
     </Form>
 </template>
 

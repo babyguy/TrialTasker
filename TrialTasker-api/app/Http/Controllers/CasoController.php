@@ -117,25 +117,24 @@ class CasoController extends Controller
         return response()->json(['message' => 'Caso eliminado exitosamente'], 201);
     }
 
-    
+
     // consultas de usuario logueado
 
     // cases actives
-    public function casesActive():JsonResponse
+    public function casesActive(): JsonResponse
     {
         $userId = auth()->user()->id;
-        $cases = Caso::where('case_user_id',$userId ,)->get()->where('case_status', 1);    
-        $cases->load('case_user','case_person');
-        return response()->json($cases, 200);
-    }
-    
-    // cases inactives
-    public function casesInactive():JsonResponse
-    {
-        $userId = auth()->user()->id;
-        $cases = Caso::where('case_user_id',$userId)->get()->where('case_status', 0);    
-        $cases->load('case_user','case_person');
+        $cases = Caso::where('case_user_id', $userId,)->get()->where('case_status', 1);
+        $cases->load('case_user', 'case_person');
         return response()->json($cases, 200);
     }
 
+    // cases inactives
+    public function casesInactive(): JsonResponse
+    {
+        $userId = auth()->user()->id;
+        $cases = Caso::where('case_user_id', $userId)->get()->where('case_status', 0);
+        $cases->load('case_user', 'case_person');
+        return response()->json($cases, 200);
+    }
 }

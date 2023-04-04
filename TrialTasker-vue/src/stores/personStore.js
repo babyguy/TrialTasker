@@ -22,7 +22,7 @@ export const usePersonStore = defineStore('persons', {
         async getPersons() {
             await axios.get('/api/persons')
             .then(response => {
-                this.personsStore = response.data;
+                console.log(this.personsStore = response.data);
             });
         },
         /* get all persons */

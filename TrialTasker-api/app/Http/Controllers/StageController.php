@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PersonStage;
 use App\Models\Stage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -12,17 +11,17 @@ class StageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): JsonResponse
+    public function index():JsonResponse
     {
         $stage = Stage::orderBy('id', 'desc')->paginate(10);
-        $stage->load('stage_type_stage', 'stage_case');
+        $stage->load('stage_type_stage','stage_case');
         return response()->json($stage);
     }
 
-    public function all(): JsonResponse
+    public function all():JsonResponse
     {
         $stage = Stage::all();
-        $stage->load('stage_type_stage', 'stage_case');
+        $stage->load('stage_type_stage','stage_case');
         return response()->json($stage);
     }
 
@@ -34,17 +33,17 @@ class StageController extends Controller
     {
         try {
             $request->validate([
-                'stage_name' => ['required', 'string'],
-                'stage_notes' => ['nullable', 'string'],
-                'stage_case_id' => ['required', 'integer'],
-                'stage_type_stage_id' => ['required', 'integer'],
+                'stage_name'=>['required','string'],
+                'stage_notes'=>['nullable','string'],
+                'stage_case_id'=>['required','integer'],
+                'stage_type_stage_id'=>['required','integer'],
             ]);
 
             $stage = Stage::create([
-                'stage_name' => $request->stage_name,
-                'stage_notes' => $request->stage_notes,
-                'stage_case_id' => $request->stage_case_id,
-                'stage_type_stage_id' => $request->stage_type_stage_id,
+                'stage_name'=> $request->stage_name,
+                'stage_notes'=> $request->stage_notes,
+                'stage_case_id'=> $request->stage_case_id,
+                'stage_type_stage_id'=> $request->stage_type_stage_id,
             ]);
             return response()->json(['message' => 'Etapa creada correctamente'], 201);
         } catch (\Illuminate\Validation\ValidationException $e) {
@@ -58,7 +57,7 @@ class StageController extends Controller
     public function show(string $id): JsonResponse
     {
         $stage = Stage::findOrFail($id);
-        $stage->load('stage_type_stage', 'stage_case');
+        $stage->load('stage_type_stage','stage_case');
         return response()->json($stage);
     }
 
@@ -67,23 +66,23 @@ class StageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id): JsonResponse
+    public function update(Request $request, string $id):JsonResponse
     {
         try {
             $stage = Stage::findOrFail($id);
 
             $request->validate([
-                'stage_name' => ['required', 'string'],
-                'stage_notes' => ['nullable', 'string'],
-                'stage_case_id' => ['required', 'integer'],
-                'stage_type_stage_id' => ['required', 'integer'],
+                'stage_name'=>['required','string'],
+                'stage_notes'=>['nullable','string'],
+                'stage_case_id'=>['required','integer'],
+                'stage_type_stage_id'=>['required','integer'],
             ]);
 
             Stage::find($id)->update([
-                'stage_name' => $request->stage_name,
-                'stage_notes' => $request->stage_notes,
-                'stage_case_id' => $request->stage_case_id,
-                'stage_type_stage_id' => $request->stage_type_stage_id,
+                'stage_name'=> $request->stage_name,
+                'stage_notes'=> $request->stage_notes,
+                'stage_case_id'=> $request->stage_case_id,
+                'stage_type_stage_id'=> $request->stage_type_stage_id,
             ]);
 
             return response()->json(['message' => 'Etapa actualizada correctamente'], 201);
@@ -95,19 +94,17 @@ class StageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id): JsonResponse
+    public function destroy(string $id):JsonResponse
     {
         Stage::find($id)->delete();
         return response()->json(['message' => 'Etapa eliminada exitosamente'], 201);
     }
-    // consultas de usuario logueado
+        // consultas de usuario logueado
 
-    
-    public function infoCase(string $id): JsonResponse
-    {
-        $stageCaseId = Stage::where('stage_case_id', $id)->get()->pluck('id');
-        $personStage = PersonStage::whereIn('person_stage_stage_id', $stageCaseId)->get();
-        $personStage->load('person_stage_stage', 'person_stage_person');
-        return response()->json($personStage);
-    }
+        public function stageCase(string $id): JsonResponse
+        {
+            $stageCase = Stage::where('stage_case_id', $id)->get();
+            // $stageCase->load('stage_type_stage','stage_case');
+            return response()->json($stageCase);
+        }
 }

@@ -36,10 +36,10 @@ main {
     width: 250px;
     height: 100%;
     position: fixed;
-    background: rgb(79,93,96);
-    background: linear-gradient(90deg, rgba(79,93,96,1) 0%, rgba(79,93,96,1) 0%, rgba(79,93,96,1) 0%, rgba(79,93,96,1) 0%, rgba(79,93,96,1) 21%, rgba(0,0,0,1) 100%, rgba(0,0,0,1) 100%, rgba(0,0,0,1) 100%); 
 
-    color: var(--white);
+    background-color: var(--brown);
+
+    color: var(--azulito);
     padding: 1.5rem 1.5rem 0 1.5rem;
     display: grid;
     grid-template-rows: max-content 1fr max-content;
@@ -60,6 +60,7 @@ main {
 
 .container {
     flex: 1;
+    width: 100%;
     background-color: var(--white);
 }
 

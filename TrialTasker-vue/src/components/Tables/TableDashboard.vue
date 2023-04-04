@@ -11,10 +11,10 @@
         <tr v-for="item in data" :key="item.id">
           <td class="table__content__data" v-for="key in thead" :key="key.key">
             <span v-if="!key.key_2">{{ item[key.key] }}</span><span v-else>{{ item[key.key][key.key_2] }}</span>
-           </td>
+          </td>
           <td class="table__content__data">
-                <router-link :to=" { name: edit, params: { id: item.id } } ">Editar</router-link>
-                <button @click="props.delete(item.id)">Eliminar</button>
+            <router-link :to="{ name: edit, params: { id: item.id } }">Editar</router-link>
+            <button @click="props.delete(item.id)">Eliminar</button>
           </td>
         </tr>
       </tbody>
@@ -25,23 +25,23 @@
 <script setup>
 import { defineProps } from 'vue';
 const props = defineProps({
-    thead: {
-        type: Array,
-        required: true,
-    },
-    /* data recibe un json */
-    data: {
-        type: Array,
-        required: true,
-    },
-    delete: {
-        type: Function,
-        required: true,
-    },
-    edit: {
-        type: Text,
-        required: true,
-    },
+  thead: {
+    type: Array,
+    required: true,
+  },
+  /* data recibe un json */
+  data: {
+    type: Array,
+    required: true,
+  },
+  delete: {
+    type: Function,
+    required: true,
+  },
+  edit: {
+    type: Text,
+    required: true,
+  },
 });
 
 </script>
@@ -49,36 +49,41 @@ const props = defineProps({
 <style>
 .table {
   margin-top: 20px;
-  width: 100%;
-  overflow: auto;
 }
+
 .table__content {
+  display: block;
+  overflow-x: auto;
   width: 100%;
   border-collapse: collapse;
 }
 
 .table__content thead {
-  background-color: #4f5d60;
-  color: white;
+  background-color: #cc2f45;
+  color: var(--azulito);
   text-align: center;
 }
 
 
 .table__content tbody tr:nth-child(odd) {
-    background-color: var(--my-hover-ligth);
+  background-color: var(--my-hover-ligth);
 }
+
 .table__content tbody tr:nth-child(even) {
-    background-color: var(--white);
+  background-color: var(--white);
 }
+
 .table__content__header {
   padding: 0.4rem 0.8rem;
 }
+
 .table__content__data {
   padding: 0.5rem 1rem;
-    text-align: center;
+  text-align: center;
 }
+
 .table__content__data button {
-  background-color: #4f5d60;
+  background-color: #cc2f45;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -86,16 +91,14 @@ const props = defineProps({
   cursor: pointer;
   margin: 0 3px
 }
+
 .table__content__data a {
   text-decoration: none;
-  background-color: #4f5d60;
+  background-color: #cc2f45;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
   margin: 0 3px;
-}
-
-
-</style>
+}</style>

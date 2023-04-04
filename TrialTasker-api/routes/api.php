@@ -8,6 +8,7 @@ use App\Http\Controllers\StageController;
 use App\Http\Controllers\TypePersonController;
 use App\Http\Controllers\TypeStageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 use App\Models\PersonStage;
 use App\Models\Stage;
 use Illuminate\Http\Request;
@@ -27,9 +28,20 @@ use Illuminate\Support\Facades\Route;
 // ------------------------dashboard------------------------
 
 
-Route::middleware(['auth:sanctum', 'authCookie','cors'])->get('/user', function (Request $request) {
+Route::middleware(['auth:sanctum', 'authCookie','logUserLogin'])->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// ------------------------dashboard----------------------------//
+Route::group([
+    'prefix' => 'dashboard',
+    'controller' => DashboardController::class,
+    'middleware' => ['auth:sanctum', 'authCookie']
+], function () {
+    Route::get('/users-week', 'getUsersForWeek');
+    Route::get('/sessions', 'getSessions');
+});
+
 
 //typePerson
 Route::group([
@@ -49,8 +61,6 @@ Route::group([
 route::group([
     'prefix'=> 'users',
     'controller'=> UserController::class,
-    'middleware' => ['auth:sanctum', 'verified', 'authCookie','cors']
-
 ],function(){
     Route::get('/', 'index');
     Route::get('/all','all');
@@ -150,6 +160,6 @@ route::group([
 // ------------------------user------------------------
 
 // casos del usuario
-Route::get('/casesActive',[CasoController::class, 'casesActive'])->middleware('cors');
-Route::get('/casesInactive',[CasoController::class, 'casesInactive'])->middleware('cors');
-Route::get('/infoCase/{id}',[StageController::class, 'infoCase'])->middleware('cors');
+Route::get('/casesActive',[CasoController::class, 'casesActive']);
+Route::get('/casesInactive',[CasoController::class, 'casesInactive']);
+Route::get('/infoCase/{id}',[StageController::class, 'infoCase']);

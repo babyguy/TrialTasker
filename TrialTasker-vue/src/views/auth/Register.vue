@@ -3,46 +3,56 @@
         <h2>Registro</h2>
         <form class="form-entry" @submit.prevent="authStore.handleRegister(form)">
             <div class="form-group-entry">
-                <input type="text" id="name" placeholder="Nombre" v-model="form.name" :class="{error_input:authStore.errors.name}">
+                <input type="text" id="name" placeholder="Nombre" v-model="form.name"
+                    :class="{ error_input: authStore.errors.name }">
                 <div v-if="authStore.errors.name">
                     <p class="error">{{ authStore.errors.name[0] }}</p>
                 </div>
             </div>
             <div class="form-group-entry">
-                <input type="text" id="lastname" placeholder="Apellido" v-model="form.lastname" :class="{error_input:authStore.errors.lastname}">
+                <input type="text" id="lastname" placeholder="Apellido" v-model="form.lastname"
+                    :class="{ error_input: authStore.errors.lastname }">
                 <div v-if="authStore.errors.lastname">
                     <p class="error">{{ authStore.errors.lastname[0] }}</p>
                 </div>
             </div>
             <div class="form-group-entry">
-                <input type="text" id="address" placeholder="Direccion" v-model="form.address" :class="{error_input:authStore.errors.address}">
+                <input type="text" id="address" placeholder="Direccion" v-model="form.address"
+                    :class="{ error_input: authStore.errors.address }">
                 <div v-if="authStore.errors.address">
                     <p class="error">{{ authStore.errors.address[0] }}</p>
                 </div>
             </div>
             <div class="form-group-entry">
-                <input type="text" id="phone" placeholder="Telefono" v-model="form.phone" :class="{error_input:authStore.errors.phone}">
+                <input type="text" id="phone" placeholder="Telefono" v-model="form.phone"
+                    :class="{ error_input: authStore.errors.phone }">
                 <div v-if="authStore.errors.phone">
                     <p class="error">{{ authStore.errors.phone[0] }}</p>
                 </div>
             </div>
             <div class="form-group-entry">
-                <input type="text" id="email" placeholder="Correo Electronico" v-model="form.email" :class="{error_input:authStore.errors.email}">
+                <input type="text" id="email" placeholder="Correo Electronico" v-model="form.email"
+                    :class="{ error_input: authStore.errors.email }">
                 <div v-if="authStore.errors.email">
                     <p class="error">{{ authStore.errors.email[0] }}</p>
                 </div>
             </div>
-            
+
             <div class="form-group-entry">
-                <input type="password" id="password" placeholder="Contraseña" v-model="form.password" :class="{error_input:authStore.errors.password}">
+                <input type="password" id="password" placeholder="Contraseña" v-model="form.password"
+                    :class="{ error_input: authStore.errors.password }">
                 <div v-if="authStore.errors.password">
                     <p class="error">{{ authStore.errors.password[0] }}</p>
                 </div>
             </div>
             <div class="form-group-entry">
-                <input type="password" id="password_confirmation" placeholder="Confirmar Contraseña" v-model="form.password_confirmation">
+                <input type="password" id="password_confirmation" placeholder="Confirmar Contraseña"
+                    v-model="form.password_confirmation">
             </div>
             <button class="btn" type="submit">Registrar</button>
+            <div class="botonAtras">
+                <RouterLink :to="{ name: 'LandingPage' }" class="atras">Atras</RouterLink>
+            </div>
         </form>
 
         <div class="circles">
@@ -62,7 +72,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useAuthStore} from '@/stores/authStore'
+import { useAuthStore } from '@/stores/authStore'
 import Entry from '@/components/Entry.vue'
 
 const authStore = useAuthStore();
@@ -80,19 +90,23 @@ const form = ref({
 </script>
 
 <style scoped>
-.entryregister{
-   opacity: 0.9999999;
-   height: auto;
+.entryregister {
+    opacity: 0.9999999;
+    height: 100vh;
 }
 
-input{
+.botonAtras {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+input {
     height: 10px;
 }
 
+.circles {
 
-
-.circles{
-    
     position: absolute;
     top: 0;
     left: 0;
@@ -100,23 +114,21 @@ input{
     height: 145vh;
     overflow: hidden;
     z-index: -1;
-    background: rgb(79,93,96);
-    background: linear-gradient(90deg, rgba(79,93,96,1) 0%, rgba(79,93,96,1) 0%, rgba(79,93,96,1) 0%, rgba(79,93,96,1) 0%, rgba(79,93,96,1) 21%, rgba(0,0,0,1) 100%, rgba(0,0,0,1) 100%, rgba(0,0,0,1) 100%); 
-
+    background-color: var(--brown);
 }
 
-.circles li{
+.circles li {
     position: absolute;
     display: block;
     list-style: none;
     width: 20px;
     height: 20px;
-    background-color: white;
+    background-color: var(--azulito);
     animation: animate 25s linear infinite;
     bottom: -150px;
 }
 
-.circles li:nth-child(1){
+.circles li:nth-child(1) {
     left: 25%;
     width: 80px;
     height: 80px;
@@ -124,7 +136,7 @@ input{
 }
 
 
-.circles li:nth-child(2){
+.circles li:nth-child(2) {
     left: 10%;
     width: 20px;
     height: 20px;
@@ -132,14 +144,14 @@ input{
     animation-duration: 12s;
 }
 
-.circles li:nth-child(3){
+.circles li:nth-child(3) {
     left: 70%;
     width: 20px;
     height: 20px;
     animation-delay: 4s;
 }
 
-.circles li:nth-child(4){
+.circles li:nth-child(4) {
     left: 40%;
     width: 60px;
     height: 60px;
@@ -147,28 +159,28 @@ input{
     animation-duration: 18s;
 }
 
-.circles li:nth-child(5){
+.circles li:nth-child(5) {
     left: 65%;
     width: 20px;
     height: 20px;
     animation-delay: 0s;
 }
 
-.circles li:nth-child(6){
+.circles li:nth-child(6) {
     left: 75%;
     width: 110px;
     height: 110px;
     animation-delay: 3s;
 }
 
-.circles li:nth-child(7){
+.circles li:nth-child(7) {
     left: 35%;
     width: 150px;
     height: 150px;
     animation-delay: 7s;
 }
 
-.circles li:nth-child(8){
+.circles li:nth-child(8) {
     left: 50%;
     width: 25px;
     height: 25px;
@@ -176,7 +188,7 @@ input{
     animation-duration: 45s;
 }
 
-.circles li:nth-child(9){
+.circles li:nth-child(9) {
     left: 20%;
     width: 15px;
     height: 15px;
@@ -184,7 +196,7 @@ input{
     animation-duration: 35s;
 }
 
-.circles li:nth-child(10){
+.circles li:nth-child(10) {
     left: 85%;
     width: 150px;
     height: 150px;
@@ -196,13 +208,13 @@ input{
 
 @keyframes animate {
 
-    0%{
+    0% {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
         border-radius: 0;
     }
 
-    100%{
+    100% {
         transform: translateY(-1000px) rotate(720deg);
         opacity: 0;
         border-radius: 50%;

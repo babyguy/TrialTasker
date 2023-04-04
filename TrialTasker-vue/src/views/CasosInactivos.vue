@@ -1,7 +1,7 @@
 <template>
     <main>
-        <HeaderTableVue title="Casos Activos" to="CreateCase" />
-
+        <HeaderTableVue title="Casos Inactivos" to="PersonDashboardCreate" />
+        
         <div class="navbar">
             <RouterLink :to="{ name: 'CambiarEstatus' }" class="button">
                 <div class="Button">Cambiar Estatus</div>
@@ -27,15 +27,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="active,index in cases.activeCases" class="caso">
+                <tr v-for="active,index in cases.inactiveCases" class="caso">
                     <td><input type="checkbox"></td>
-                    <td>{{ cases.numactivos[index] }}</td>
-                    <td>{{ active.case_name }}</td>
-                    <td>{{ active.case_radicate }}</td>
-                    <td>Activo</td>
+                    <td>{{ cases.numinactivos[index] }}</td>
+                    <td>{{ active["case_name"] }}</td>
+                    <td>{{ active["case_radicate"] }}</td>
+                    <td>Inactivo</td>
                     <td>
-                        <RouterLink :to="{ name: 'SeeMoreActive' }" class="navButton" @click="cases.getCase(active.id)" >
-                            <div class="buttonSeeMore" @click="cases.id=cases.active.id">Ver Mas</div>
+                        <RouterLink :to="{ name: 'SeeMoreActive' }" class="navButton" @click="cases.getCase(active.id)">
+                            <div class="buttonSeeMore">Ver Mas</div>
                         </RouterLink>
                         <RouterLink :to="{ name: 'ActualizarCaso' }" class="navButton" @click="cases.getCase(active.id)">
                             <div class="buttonSeeMore">Actualizar</div>
@@ -51,11 +51,11 @@
 import { onMounted } from 'vue';
 import { useCaseStore } from '@/stores/caseStore';
 import HeaderTableVue from '@/components/headers/HeaderTableNoButton.vue';
-
+import TableUser from '@/components/Tables/TableUsers.vue';
 
 const cases = useCaseStore();
 onMounted(() => {
-    cases.casesActive();
+    cases.casesInactive()
 });
 
 document.addEventListener("keyup", e => {
@@ -68,11 +68,12 @@ document.addEventListener("keyup", e => {
     }
 })
 
+
+
 </script>
 
 <style scoped>
 /* variables */
-
 
 
 .filtro {
@@ -105,9 +106,9 @@ main {
 }
 
 /* estilos boton de crear caso */
-.Button {
+.createButton {
     border: solid 1px;
-    width: 20vw;
+    width: 20vh;
     padding: 5px;
     height: 30px;
     text-align: center;
@@ -117,7 +118,7 @@ main {
 
 }
 
-.button {
+.buttonCreateCase {
     text-decoration: none;
 
 }
@@ -137,13 +138,12 @@ thead {
 
 /* estilos del tbody */
 
-
 td{
     text-align: center;
 }
 
 .tds {
-    width: 20vw;
+    width: 25vh;
     text-align: center;
     border-radius: 5px;
 
@@ -153,21 +153,31 @@ td{
     border-radius: 5px;
     text-align: center;
     padding: 5px;
-
 }
 
 tr {
     margin-top: 5vh;
     height: 50px;
-
 }
-
 
 a{
     text-decoration: none;
-    color: #000;
+    color: black;
 }
+
 input {
     height: 15px;
+}
+
+.Button {
+    border: solid 1px;
+    width: 20vw;
+    padding: 5px;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: var(--verde);
+    color: var(--white);
+
 }
 </style>

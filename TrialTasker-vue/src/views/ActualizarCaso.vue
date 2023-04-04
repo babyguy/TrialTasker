@@ -1,9 +1,6 @@
 <template>
     <div class="sub_container">
-        <header>
-            <button class="atras">Atras</button>
-            <h1>Actualizar Caso</h1>
-        </header>
+        <HeaderAccions title="Actualizar caso" to="CasosActivos" />
         <main class="cont_inputs">
             <div class="izquierda">
                 <h2>Fiscal de conocimiento</h2>
@@ -12,14 +9,14 @@
                 <input type="email" placeholder="Correo">
                 <input type="number" placeholder="Telefono">
                 <input type="text" placeholder="Notas fiscal">
-    
+
                 <h2>Juez de conocimiento</h2>
                 <input type="text" placeholder="Nombre">
                 <input type="number" placeholder="Numero de despacho">
-                <input type="email" placeholder="correo"> 
+                <input type="email" placeholder="correo">
                 <input type="text" placeholder="Direccion">
                 <input type="date" placeholder="fecha">
-                <input type="text" placeholder="Notas Juez"> 
+                <input type="text" placeholder="Notas Juez">
             </div>
             <div class="derecha">
                 <h2>Ministerio publico</h2>
@@ -28,11 +25,11 @@
                 <input type="email" placeholder="Correo">
                 <input type="number" placeholder="Telefono">
                 <input type="text" placeholder="Direccion">
-    
+
                 <h2>Segunda instancia</h2>
                 <input type="text" placeholder="Autoridad">
                 <input type="number" placeholder="Radicado">
-                <input type="email" placeholder="Numero de despacho"> 
+                <input type="email" placeholder="Numero de despacho">
                 <input type="date" placeholder="fecha">
             </div>
         </main>
@@ -41,25 +38,23 @@
 </template>
 
 <script setup>
-
+import HeaderAccions from '@/components/headers/HeaderAccions.vue';
 </script>
 
 <style>
-
-
-
-.container{
+.container {
     width: 74vw;
 
 }
-.sub_container{
+
+.sub_container {
     box-shadow: 0px 0px 10px 0.1px rgba(0, 0, 0, 0.288);
     border-radius: 12px;
     padding-bottom: 10px;
 
 }
 
-header{
+header {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -69,7 +64,8 @@ header{
     border-top-right-radius: 12px;
     color: var(--white);
 }
-.atras{
+
+.atras {
     width: 60px;
     position: absolute;
     left: 27.1vw;
@@ -81,19 +77,22 @@ header{
     color: white;
 
 }
-.cont_inputs{
+
+.cont_inputs {
     display: flex;
     justify-content: center;
     gap: 5%;
 }
-.izquierda{
+
+.izquierda {
     width: 45%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
 }
-.derecha{
+
+.derecha {
     width: 45%;
     display: flex;
     flex-direction: column;
@@ -101,7 +100,8 @@ header{
 
     gap: 10px;
 }
-input{
+
+input {
     height: 30px;
     width: 100%;
     border: none;
@@ -109,7 +109,8 @@ input{
     padding-left: 5px;
     background-color: #e8e8e8;
 }
-.notas{
+
+.notas {
     width: 95%;
     padding: 10px;
     display: flex;

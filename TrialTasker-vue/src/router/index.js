@@ -1,4 +1,3 @@
-
 import { createRouter, createWebHistory, useRouter } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import axios from "axios";
@@ -9,9 +8,8 @@ import personRoutes from "./person";
 import caseRoutes from "./case";
 import typeStageRoutes from "./typeStage";
 import stageRoutes from "./stage";
-import fileRoutes from './files';
-import personStageRoutes from './personStage';
-
+import fileRoutes from "./files";
+import personStageRoutes from "./personStage";
 
 import Cookies from "js-cookie";
 
@@ -63,11 +61,19 @@ const router = createRouter({
       },
     },
     {
-      path: "/createcase",
-      name: "CreateCase",
-      component: () => import("../views/CreateCase.vue"),
+      path: "/createperson",
+      name: "CreatePerson",
+      component: () => import("../views/CreatePerson.vue"),
       meta: {
-        title: "Crear Caso",
+        title: "Crear Persona",
+      },
+    },
+    {
+      path: "/createcasePRUEBA",
+      name: "CreateCasePRUEBAS",
+      component: () => import("../views/CreateCasePRUEBAS.vue"),
+      meta: {
+        title: "Crear Caso 2",
       },
     },
     {
@@ -76,6 +82,46 @@ const router = createRouter({
       component: () => import("../views/CasosActivos.vue"),
       meta: {
         title: "Casos Activos",
+      },
+    },
+    {
+      path: "/casosinactivos",
+      name: "CasosInactivos",
+      component: () => import("../views/CasosInactivos.vue"),
+      meta: {
+        title: "Casos Inactivos",
+      },
+    },
+    {
+      path: "/casosinactivos",
+      name: "CasosInactivos",
+      component: () => import("../views/CasosInactivos.vue"),
+      meta: {
+        title: "Casos Inactivos",
+      },
+    },
+    {
+      path: "/cambiarestatus",
+      name: "CambiarEstatus",
+      component: () => import("../views/CambiarEstatus.vue"),
+      meta: {
+        title: "Cambiar Estatus del Caso",
+      },
+    },
+    {
+      path: "/vermasactivos",
+      name: "SeeMoreActive",
+      component: () => import("../views/SeeMoreActive.vue"),
+      meta: {
+        title: "Detalles del caso",
+      },
+    },
+    {
+      path: "/vermasinactivos",
+      name: "SeeMoreInactive",
+      component: () => import("../views/SeeMoreInactive.vue"),
+      meta: {
+        title: "Detalles del caso",
       },
     },
     {
@@ -88,8 +134,7 @@ const router = createRouter({
         ...typeStageRoutes,
         ...stageRoutes,
         ...fileRoutes,
-        ...personStageRoutes
-
+        ...personStageRoutes,
       ],
     },
   ],

@@ -78,7 +78,9 @@
                 </div>
                 <div class="informacion">
                     <h4>Informacion</h4>
-                    <p>dfhgsdfhhhhhhhhhhdsfgdf</p>
+                    <p>dfhgsdfhhhhhhgdf</p>
+                    <p>dfhgsdfhhhhhdsfgdf</p>
+
                 </div>
             </div>
 
@@ -182,7 +184,6 @@ import Logo from '../components/logo/Logo.vue';
     align-items: center;
     flex-wrap: wrap;
     gap: 30px;
-    padding: 5px;
     text-align: center;
 }
 
@@ -258,8 +259,9 @@ footer {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    background: rgb(79,93,96);
-    background: linear-gradient(90deg, rgba(79,93,96,1) 0%, rgba(79,93,96,1) 0%, rgba(79,93,96,1) 0%, rgba(79,93,96,1) 0%, rgba(79,93,96,1) 21%, rgba(0,0,0,1) 100%, rgba(0,0,0,1) 100%, rgba(0,0,0,1) 100%); 
+    background-color: var(--brown);
+
+
 }
 
 .logo {
@@ -288,17 +290,20 @@ footer {
     gap: 10px;
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:820px) {
+    
     .image1 {
         width: 100%;
     }
 
     .texto1 {
         width: 100%;
+        padding: 0px 10px;
     }
 
     .texto2 {
         width: 100%;
+        padding: 0px 10px;
     }
 
     .image2 {
@@ -311,6 +316,7 @@ footer {
 
     .texto3 {
         width: 100%;
+        padding: 0px 10px;
     }
 
     .buttonLogin {
@@ -326,7 +332,7 @@ footer {
     }
 
     footer {
-        height: 200px;
+        height: auto;
     }
 
     .foologo {

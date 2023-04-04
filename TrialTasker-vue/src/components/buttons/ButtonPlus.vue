@@ -3,6 +3,7 @@
 </template>
 
 <script setup>
+
 import { IconSquareRoundedPlusFilled } from '@tabler/icons-vue'
 import { defineProps } from 'vue'
 defineProps({
@@ -16,7 +17,7 @@ defineProps({
 
 <style scoped>
 .button-plus {
-    background-color: #4f5d60;
+    background-color: var(--brown);
     border: none;
     border-radius: 0.5rem;
     width: 2.5rem;

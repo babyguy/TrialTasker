@@ -13,6 +13,8 @@ use App\Models\Person;
 use App\Models\PersonStage;
 use App\Models\Stage;
 use App\Models\TypeStage;
+use App\Models\PlataformUsageRegister;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -37,6 +39,17 @@ class DatabaseSeeder extends Seeder
         Stage::factory(10)->create();
         PersonStage::factory(10)->create();
         File::factory(20)->create();
+
+        // crea registros de una semana hasta hoy para la tabla PlataformUsageRegister
+        $start = Carbon::now()->subDays(7)->format('Y-m-d');
+        $end = Carbon::now()->format('Y-m-d');
+        
+        for ($date = $start; $date <= $end; $date++) {
+            PlataformUsageRegister::factory()->create([
+                'date' => $date,
+                'users_count' => rand(0, 100),
+            ]);
+        }
     }
     
 }
